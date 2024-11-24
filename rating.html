@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    #vis.vega-embed {
+      width: 100%;
+      display: flex;
+    }
+
+    #vis.vega-embed details,
+    #vis.vega-embed details summary {
+      position: relative;
+    }
+  </style>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-lite@5.20.1"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+</head>
+<body>
+  <div id="vis"></div>
+  <script>
+    (function(vegaEmbed) {
+      var spec = {"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}, "axisX": {"labels": false, "ticks": false, "title": null}, "axisY": {"labelFontSize": 13, "tickCount": 5, "titleFontSize": 15}, "header": {"labelFontSize": 11, "labelFontStyle": "bold", "labelPadding": -320, "titleFontSize": 14, "titleOrient": "bottom"}, "legend": {"cornerRadius": 10, "fillColor": "#EEEEEE", "legendX": 292, "legendY": 10, "orient": "none", "padding": 10, "strokeColor": "black"}, "title": {"anchor": "middle", "dy": 10, "font": "Times New Roman", "fontSize": 20, "orient": "top"}}, "data": {"name": "data-9acfacd1b5b78bbb20436b723288942d"}, "facet": {"column": {"field": "Category", "type": "nominal"}}, "spec": {"layer": [{"mark": {"type": "bar"}, "encoding": {"color": {"field": "Type Of Traveller", "scale": {"domain": ["Business", "Couple Leisure", "Family Leisure", "Solo Leisure"], "range": ["black", "red", "green", "blue"]}, "type": "nominal"}, "tooltip": [{"field": "Type Of Traveller", "type": "nominal"}, {"field": "Rating", "format": ".2f", "type": "quantitative"}], "x": {"field": "Type Of Traveller", "type": "nominal"}, "y": {"field": "Rating", "scale": {"domain": [0, 5]}, "title": "Average Rating", "type": "quantitative"}}}, {"mark": {"type": "text", "angle": 90, "color": "white", "dx": 19, "dy": 1, "fontStyle": "bold"}, "encoding": {"text": {"field": "Rating", "format": ",.2f", "type": "quantitative"}, "x": {"field": "Type Of Traveller", "type": "nominal"}, "y": {"field": "Rating", "scale": {"domain": [0, 5]}, "title": "Average Rating", "type": "quantitative"}}}]}, "title": {"text": "Average Ratings for each Traveller Type"}, "$schema": "https://vega.github.io/schema/vega-lite/v5.20.1.json", "datasets": {"data-9acfacd1b5b78bbb20436b723288942d": [{"Type Of Traveller": "Business", "Category": "Seat Comfort", "Rating": 2.6579675761170423}, {"Type Of Traveller": "Couple Leisure", "Category": "Seat Comfort", "Rating": 2.474690191136316}, {"Type Of Traveller": "Family Leisure", "Category": "Seat Comfort", "Rating": 2.4780262143407863}, {"Type Of Traveller": "Solo Leisure", "Category": "Seat Comfort", "Rating": 2.7286689419795223}, {"Type Of Traveller": "Business", "Category": "Cabin Staff Service", "Rating": 2.9189511323003576}, {"Type Of Traveller": "Couple Leisure", "Category": "Cabin Staff Service", "Rating": 2.758402029169309}, {"Type Of Traveller": "Family Leisure", "Category": "Cabin Staff Service", "Rating": 2.705775705775706}, {"Type Of Traveller": "Solo Leisure", "Category": "Cabin Staff Service", "Rating": 2.996101668485888}, {"Type Of Traveller": "Business", "Category": "Food & Beverages", "Rating": 2.5666497719209325}, {"Type Of Traveller": "Couple Leisure", "Category": "Food & Beverages", "Rating": 2.444188722669735}, {"Type Of Traveller": "Family Leisure", "Category": "Food & Beverages", "Rating": 2.442361111111111}, {"Type Of Traveller": "Solo Leisure", "Category": "Food & Beverages", "Rating": 2.715450554045578}, {"Type Of Traveller": "Business", "Category": "Ground Service", "Rating": 2.365237366003063}, {"Type Of Traveller": "Couple Leisure", "Category": "Ground Service", "Rating": 2.2532768703367614}, {"Type Of Traveller": "Family Leisure", "Category": "Ground Service", "Rating": 2.2188420019627086}, {"Type Of Traveller": "Solo Leisure", "Category": "Ground Service", "Rating": 2.5055762081784385}, {"Type Of Traveller": "Business", "Category": "Inflight Entertainment", "Rating": 2.296783625730994}, {"Type Of Traveller": "Couple Leisure", "Category": "Inflight Entertainment", "Rating": 2.188259109311741}, {"Type Of Traveller": "Family Leisure", "Category": "Inflight Entertainment", "Rating": 2.2635555555555555}, {"Type Of Traveller": "Solo Leisure", "Category": "Inflight Entertainment", "Rating": 2.383751846381093}, {"Type Of Traveller": "Business", "Category": "Wifi & Connectivity", "Rating": 1.8516284680337756}, {"Type Of Traveller": "Couple Leisure", "Category": "Wifi & Connectivity", "Rating": 1.707192870782941}, {"Type Of Traveller": "Family Leisure", "Category": "Wifi & Connectivity", "Rating": 1.7621293800539084}, {"Type Of Traveller": "Solo Leisure", "Category": "Wifi & Connectivity", "Rating": 1.8212180746561886}, {"Type Of Traveller": "Business", "Category": "Value For Money", "Rating": 2.3898367952522257}, {"Type Of Traveller": "Couple Leisure", "Category": "Value For Money", "Rating": 2.274074074074074}, {"Type Of Traveller": "Family Leisure", "Category": "Value For Money", "Rating": 2.230062054700069}, {"Type Of Traveller": "Solo Leisure", "Category": "Value For Money", "Rating": 2.521494801910649}]}};
+      var embedOpt = {"mode": "vega-lite"};
+
+      function showError(el, error){
+          el.innerHTML = ('<div style="color:red;">'
+                          + '<p>JavaScript Error: ' + error.message + '</p>'
+                          + "<p>This usually means there's a typo in your chart specification. "
+                          + "See the javascript console for the full traceback.</p>"
+                          + '</div>');
+          throw error;
+      }
+      const el = document.getElementById('vis');
+      vegaEmbed("#vis", spec, embedOpt)
+        .catch(error => showError(el, error));
+    })(vegaEmbed);
+
+  </script>
+</body>
+</html>
