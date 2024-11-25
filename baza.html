@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unemployment rate study</title>
+    <link href="style.css" rel="stylesheet" />
+</head>
+<body>
+    
+    <h1> What is the driving force behind negative reviews of airlines?</h1>
+
+    <h3>Overall Introduction</h3>
+
+    <p>Many consumers have had poor experiences with commercial airlines,
+        especially after the COVID-19 pandemic disrupted travel possibilities 
+        for consumers around the world. There are a number of factors that contribute 
+        to negative travel experiences, including poor service, delayed flights, uncomfortable 
+        in-flight seating, lost luggage, and long wait times. With so many airline options available
+         to the public, it is important for consumers to understand their options and which airlines will
+        (and won’t) satisfy their travel needs. By conducting a thorough analysis of our dataset of negative 
+        airline reviews, we can gain valuable insights into consumer airline experiences that have the 
+        potential to disrupt the entire global airline industry worth $726.8 billion. Not only does this
+         data exploration have significant financial implications but it can also serve as a starting point 
+         for addressing core issues within the travel industry to improve airline services, streamline business 
+         operations, and perhaps most importantly, boost customer satisfaction in years to come. After cleaning 
+         our dataset, performing detailed sentiment analysis, and creating interactive visualizations, our group 
+         aims to develop key recommendations for airlines to reshape the travel industry into one of the best-rated 
+         markets in the world.
+    </p>
+
+
+    <p>To learn more about the driving force behind negative reviews of airlines,
+         you can visit the <a href="money.com/united-airlines-fiasco-overbooked-passenger-dragged-stock-price-value/. ">article: “Here’s How Much United Airlines Stock Tanked This Week.”</a> or explore 
+         the article about passenger complaints about airline travel in 2023:
+         <a href="www.cbsnews.com/news/airline-complaints-airport-travel-passengers-2023/.">CBS News</a>.</p>
+
+    <h3>Introduction to the data</h3>
+
+    <p> Our analysis makes use of two datasets. the first data is 
+        a data set called `us_statewide_crime.csv` which contains 
+        the following crime statistics for all US states and the 
+        District of Columbia in 2010. The data has 50 rows with 9 
+        features. The detail information about the features are listed
+        in the following table:</p>  
+
+        
+        <p>Meanwhile, we also believe that the geographical 
+            information is important when evaluating the unemployment
+            rate. Therefore, we also make use of geographical information 
+            on <a href="www.airlinequality.com">Natural Earth</a>. 
+            The website provides the geographical information for making maps for US states. 
+        </p>
+
+        <p>KARINA, we remove the Alaska and Hawaii
+            from the data. Following is an interactive map for the 
+            lower 48 states in US. User can zoom in the map. The color
+            indicates the unemployment rate for each state. When click any 
+            state, other social factors will be revealed for the state. </p>
+
+            <div class = 'center'>
+                <iframe src="index.html" width="80%" height="400px" frameborder="0"></iframe>
+            </div>
+            
+            <p>In general, west coast states tend to have higher 
+                unemployment rate. On the east coast, West virginia 
+                and New York state tend to have higher unemplyment rate
+                than the others. In the south, Mississippi and Louisiana
+                are the ones with the much higher unemplyment rate.
+            </p>
+
+        <h3>Sentiment analysis </h3>
+        
+        <div class = 'center'>
+                <!-- <iframe src="histogram/index.html" width="100%" height="400px" frameborder="0"></iframe>-->
+                <iframe src="sentiment.html" width="100%" height="400px" frameborder="0"></iframe>
+            </div>
+            <div class = 'text'>
+                <p> First, we present an overview of the unemployment rate
+                    for all 50 states. Alaska is the one with the 
+                    highest unemployment rate, which may due to the seasonal 
+                    business in the state. The effectiveness of labor market 
+                    policies and governance structures can influence unemployment 
+                    rates. Washington, D.C., being the seat of government, may 
+                    experience fluctuations in employment related to government 
+                    spending and policies. Mississippi and Louisiana have economies 
+                    that are heavily reliant on sectors such as agriculture, 
+                    manufacturing, and energy. Economic downturns or fluctuations 
+                    in these industries can impact employment opportunities. 
+                    Connecticut, South Dakota and Virginia have the lowest 
+                    unemplyment rate. These states often have diverse economies 
+                    with strong sectors such as technology, healthcare, finance, 
+                    and tourism. A diverse economy can provide more resilience to 
+                    economic downturns.
+                </p>
+            </div>            
+        </div>
+        
+        <h3> The relationship between unemployment rate and other social factors</h3>
+
+        <div class = 'container'>
+            <div class = 'text'>
+                <p>Moreover, we also want to examine the relationship between
+                    unemployment rate and other social factors in the data. All 
+                    features are numerical thus we firts create a correlation
+                    plot to examine whether there are linear relationship between 
+                    unemployment rate with other social factors. Notice that if 
+                    the correlation is small, it only means that there is no potential
+                    linear relationship between two features. 
+                </p>
+                <p>
+                    Based on the correlation plot, among all the features, poverty 
+                    has the strongest correlation with the unemployment rate since
+                    they are both related to the economics. The percentage of single 
+                    parents is the second important feature which inidicates the 
+                    stability of family is also strongly related to the job market. 
+                    The increase of unemployment rate may also related to the increase 
+                    of violent crime and murder rate but has a negative relationship
+                    with education indicators, like the percentage of people who go to
+                    high school and college. The only variable that has no direct linear
+                    relation with the unemployment rate is Metropolitan, which means the 
+                    percent of residents living in a metropolitan area. 
+                </p>
+            </div>
+            <div class = 'image'>
+                <img src="correlation_plot.png" width="100%" height="500px" frameborder="0"></img>
+            </div>   
+        </div>
+
+        <p>We have also create an interactive scatter plot so that 
+            our users can select a couple of states within
+            a certain range of unemployment rate and to see how the 
+            other factors may be related here. 
+        </p>
+
+        <div class = 'center'>
+            <iframe src="area.html" width="85%" height="550px" frameborder="0"></iframe>
+        </div>
+
+        <h3>Compare MA to the other states</h3>
+
+        <p>
+            Since we are in MA, thus we want to take a closer look between
+            MA and other states. We create the following interactive plot
+            such that user can choose another state to compare with MA and 
+            show the bar plot on each factors. 
+        </p>
+
+        <div class = 'center'>
+            <iframe src="summary.html" width="95%" height="300px" frameborder="0"></iframe>
+        </div>
+
+        <h3>Summary and additional work</h3>
+
+        <p>
+            In this visualization analysis, we try to explore the US 
+            unemployment rate across states. We also examine the relation
+            between unemployment rate and other social factors. 
+        </p>
+        <p>
+            Unfortunately, this is the 2010 data thus may be different 
+            than the current economics status. Also, unemployment rate 
+            may fluctuate seasonally thus adding a time series analysis
+            will be more informative. 
+        </p>
+
+        <p>If you are interested in the project and want to share more
+            opinions or resource about the project, please contact:
+            Xiaoyi Yang (xiaoy.yang@northeastern.edu)
+        </p>
+
+</body>
+</html>

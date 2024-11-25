@@ -1,7 +1,7 @@
 // Set graph margins and dimensions
-var margin = {top: 40, right: 20, bottom: 60, left: 40},
-    width = 500 - margin.left - margin.right,
-    height = 250 - margin.top - margin.bottom;
+var margin = {top: 40, right: 40, bottom: 100, left: 40},
+    width = 800 - margin.left - margin.right,
+    height = 300 - margin.top - margin.bottom;
 
 // Set ranges
 var x = d3.scaleBand()

@@ -1,7 +1,7 @@
 // Set graph margins and dimensions
-var margin = {top: 20, right: 20, bottom: 30, left: 40},
-    width = 500 - margin.left - margin.right,
-    height = 250 - margin.top - margin.bottom;
+var margin = {top: 40, right: 40, bottom: 100, left: 40},
+    width = 800 - margin.left - margin.right,
+    height = 300 - margin.top - margin.bottom;
 
 // Set ranges
 var x = d3.scaleBand()
@@ -11,7 +11,7 @@ var x = d3.scaleBand()
 var y = d3.scaleLinear()
           .range([height, 0]);
 
-var svg4 = d3.select("#ground").append("svg")
+var svg4 = d3.select("#wifi").append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
   .append("g")
