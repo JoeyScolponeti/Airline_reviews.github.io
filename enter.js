@@ -1,7 +1,7 @@
 // Set graph margins and dimensions
-var margin = {top: 20, right: 20, bottom: 30, left: 40},
-    width = 500 - margin.left - margin.right,
-    height = 250 - margin.top - margin.bottom;
+var margin = {top: 40, right: 40, bottom: 100, left: 50},
+    width = 800 - margin.left - margin.right,
+    height = 350 - margin.top - margin.bottom;
 
 // Set ranges
 var x = d3.scaleBand()
@@ -24,6 +24,10 @@ d3.csv("to50mean.csv").then(function(data) {
   data.forEach(function(d) {
     d.Inflight_Entertainment = +d.Inflight_Entertainment;
   });
+
+  data.sort(function(x, y){
+  return d3.descending(x.Inflight_Entertainment, y.Inflight_Entertainment)
+  })
 
   // Scale the range of the data in the domains
   x.domain(data.map(function(d) { return d.Airline; }));
@@ -58,5 +62,5 @@ d3.csv("to50mean.csv").then(function(data) {
       .attr("x",0 - (height / 2))
       .attr("dy", "1em")
       .style("text-anchor", "middle")
-      .text("Rate");  
+      .text("Rating");
 });

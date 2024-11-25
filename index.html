@@ -3,37 +3,258 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homework 3 D3 part</title>
+    <title>Unemployment rate study</title>
+    <link href="style.css" rel="stylesheet" />
 </head>
 <body>
-    <h1>Bar plot</h1>
-    <h3>Seat Comfort Rating</h3>
-    <div id="seat"></div>
-    <h3>Cabin Staff Rating</h3>
-    <div id="cabin"></div>
-    <h3>Food and Drinks Rating</h3>
-    <div id="food"></div>
-    <h3>Entertainment Rating</h3>
-    <div id="enter"></div>
-    <h3>Wi-Fi Rating</h3>
-    <div id="wifi"></div>
-    <h3>Value For Money Rating</h3>
-    <div id="vfm"></div>
-    <h3>Ground Service Rating</h3>
-    <div id="ground"></div>
+    
+    <h1>What is the driving force behind negative reviews of airlines?</h1>
 
-    
-    <script src='https://d3js.org/d3.v7.min.js'></script>
-    <script src='proj.js'></script> 
-    <script src='cabinstaff.js'></script> 
-    <script src='food.js'></script> 
-    <script src='enter.js'></script> 
-    <script src='wifi.js'></script> 
-    <script src='vfm.js'></script> 
-    <script src='ground.js'></script> 
-   
+    <h2>Authors:</h2>
 
-    
-    
+    <ul>
+        <li>Joey Scolponeti</li>
+        <li>Karina Mehta</li>
+        <li>Sophie Sawyer</li>
+        <li>Rithik Raghuraman</li>
+    </ul>
+
+    <h2>Overall Introduction</h2>
+
+    <p>Many consumers have had poor experiences with commercial airlines,
+        especially after the COVID-19 pandemic disrupted travel possibilities 
+        for consumers around the world. There are a number of factors that contribute 
+        to negative travel experiences, including poor service, delayed flights, uncomfortable 
+        in-flight seating, lost luggage, and long wait times. With so many airline options available
+         to the public, it is important for consumers to understand their options, and which airlines will
+        (and won’t) satisfy their travel needs. By conducting a thorough analysis of our dataset of
+        airline reviews, we can gain valuable insights into consumer airline experiences that have the 
+        potential to disrupt the entire global airline industry worth $726.8 billion. Not only does this
+         data exploration have significant financial implications, but it can also serve as a starting point
+         for addressing core issues within the travel industry. It can improve airline services, streamline business
+         operations, and perhaps most importantly, boost customer satisfaction in years to come. After cleaning 
+         the dataset, performing detailed sentiment analysis, and creating interactive visualizations, this analysis
+         aims to identify why airline reviews receive the rating that they get. This helps the industry through
+        pinpointing areas of improvement, as well as assisting the consumer by breaking down the context of reviews.
+    </p>
+
+
+    <p>More information about the driving force behind negative airline reviews,
+         can be found at:
+        <a href="money.com/united-airlines-fiasco-overbooked-passenger-dragged-stock-price-value/. ">“Here’s How Much United Airlines Stock Tanked This Week.”</a>
+    </p>
+    <p>
+        Or, explore the article about passenger complaints about airline travel in 2023:
+         <a href="www.cbsnews.com/news/airline-complaints-airport-travel-passengers-2023/.">CBS News</a>.
+    </p>
+
+    <h2>The Dataset</h2>
+
+    <p> The dataset we used for this project is named <a href="https://www.kaggle.com/datasets/khushipitroda/airline-reviews">
+        “SkyRatings: Unleashing 23K+ Airline Reviews!”</a>, which can be found on Kaggle. The reviews were scraped from
+        <a href="www.airlinequality.com">www.airlinequality.com</a>, which is an open forum where passengers
+        can share their flight experiences to help other passengers make informed booking decisions. The original data
+        contained 23,172 reviews. Depending on the visualization, the dataset was cleaned and filtered to best fit the
+        attributes being analyzed. The attributes are as follows: </p>
+
+    <ul>
+        <li><b><code>Airline Name</code></b></li>
+        <li><b><code>Overall Rating</code></b>
+        <ul><li>The rating of the reviewer's experience with the airline between 1 and 9</li></ul>
+        </li>
+        <li><b><code>Review Title</code></b></li>
+        <li><b><code>Review Date</code></b></li>
+        <li><b><code>Verified</code></b>
+        <ul><li>Boolean value indicating in the reviewer is a verified user</li></ul>
+        </li>
+        <li><b><code>Review</code></b>
+        <ul><li>Full string of the written review for the airline</li></ul>
+        </li>
+        <li><b><code>Aircraft</code></b></li>
+        <li><b><code>Type Of Traveller</code></b></li>
+        <ul><li>One of four types of travellers:<ul>
+            <li>Business</li>
+            <li>Couple Leisure</li>
+            <li>Family Leisure</li>
+            <li>Solo Leisure</li>
+        </ul></li></ul>
+        <li><b><code>Seat Type</code></b>
+        <ul><li>Economy, Business, First Class, etc.</li></ul>
+        </li>
+        <li><b><code>Route</code></b></li>
+        <li><b><code>Date Flown</code></b>
+        <ul><li>Month and year that trip was taken</li></ul>
+        </li>
+        <li><b><code>Recommended</code></b>
+        <ul><li>Boolean value representing if the reviewer would recommend this airline to others</li></ul>
+        </li>
+    </ul>
+
+    <p>
+        The remaining attributes are "subscores" of the overall rating, meaning that the reviewer also rated the
+        quality of more specific parts of their flight. Unlike with <code>Overall Rating</code>, all of these ratings
+        are between 1 and 5. The categories are:
+    </p>
+    <ul>
+        <li><b><code>Seat Comfort</code></b></li>
+        <li><b><code>Cabin Staff Service</code></b></li>
+        <li><b><code>Food & Beverages</code></b></li>
+        <li><b><code>Ground Service</code></b></li>
+        <li><b><code>Inflight Entertainment</code></b></li>
+        <li><b><code>Wifi & Connectivity</code></b></li>
+        <li><b><code>Value For Money</code></b></li>
+
+    </ul>
+
+    <h2>Subscore Visualizations</h2>
+
+    <h3>Composition of Overall Ratings</h3>
+
+        <div class = 'center'>
+                <iframe src="area-new.html" width="100%" height="400px" frameborder="0"></iframe>
+        </div>
+            <div class = 'text'>
+                <p>
+                </p>
+            </div>
+    <p>
+        The area plot displayed above showcases the distribution of <b><code>Overall Rating</code></b> values.
+                    Additionally, the data is color-coded by rating sentiment, which can be "Positive" (ratings of 7 to 9),
+                    "Neutral" (ratings of 4 to 6), or "Negative" (ratings of 1 to 3). The plot's tooltip gives more specific
+                    information on each individual ratings frequency. One evident fact that it helps to highlight is that
+                    "1" ratings are the most common by far. There are ~11,000 of them, while almost every other bucket has
+                    less than 2,000. In other words, a majority of the reviews are extremely harsh,
+                    which makes sense since customers are more likely to leave a review if they were wronged
+                    by the airline, and want to warn others before booking. "Neutral" reviews have the fewest ratings,
+                    which is logical because if customers don't care as much about an airline, they’re
+                    less inclined to provide their opinion on it. "Positive" reviews are slightly more frequent than
+                    "Neutral" ones, which is intriguing because you would believe that if people were passionate about a
+                    trip, you would see similar frequencies to the negative reviews. This is likely because people only
+                    really care about the quality of their flight when things go horribly wrong. Therefore, from the airline's
+                    perspective, it's critical that issues with the services are addressed first before looking to improve
+                    aspects that are already good. Also, because of this skew, potential traveller's should view these ratings
+                    as evaluation of how little issues they had with their trip.
+    </p>
+    <h3>Importance of Subscores based on Traveller Classification</h3>
+
+        <div class = 'center'>
+                <iframe src="rating.html" width="100%" height="400px" frameborder="0"></iframe>
+        </div>
+            <div class = 'text'>
+                <p> This bar plot compares each kind of traveller's ratings towards each different subscore. If airlines
+                    were looking to appeal to a given market segment, this visualization would help to identify where each
+                    traveller type's values lie. By layering the types of travellers side-by-side in this fashion, two
+                    distinct groupings can be seen. "Business" and "Solo Leisure" share very similar ratings, as well as
+                    "Couple Leisure" and "Family Leisure". Coincidentally, both of these groups can be boiled down to solo
+                    travellers and group travellers. With this correlation in mind, it shows that solo travellers have higher ratings
+                    across the board compared to than group travellers, implying that they are less critical towards their flight experience.
+                    This is supported by the point identified in the previous graph that overall ratings are mostly influenced
+                    by those hard-hitting negative reviews. Even with these individual differences, it's clear that all of
+                    these groups are following a similar trend to which aspects of the flight they care about the most.
+                    This graph points out that passengers have the worst experiences with airline wi-fi relative to everything
+                    else. Most people turn to their phones and computers when they are
+                    on a plane, so if they are having connectivity issues the entire time, they are likely going to be very
+                    annoyed and leave bad reviews.
+                </p>
+            </div>
+
+            <h3>Subscores by Airline</h3>
+
+            <p> By clicking the button below, you can see breakdowns by airline on how they are performing
+                in each of the subscores showcased in the previous bar blot. These can be used to help prospective
+                travellers to identify which airline has the best performance in the area they care about most.
+            </p>
+
+
+            <div style="text-align: center;">
+            <button id = 'navigationButton'>Individual Airline Ratings per Category</button>
+            <script>
+                const navigationButton = document.getElementById('navigationButton')
+                navigationButton.addEventListener('click', function(){
+                    window.location.href = 'bars.html';
+                }
+
+                )
+            </script>
+            </div>
+
+        <h2>Sentiment Analysis</h2>
+
+        <p>
+           Sentiment analysis was conducted on airline reviews to better understand customer satisfaction.
+            The analysis utilized sentiment scores, including positive, negative, and composite compound scores to conduct
+            a comprehensive assessment of each review. The data revealed significant variations in sentiment across airlines,
+            with some showing consistently positive feedback, while others exhibiting more polarized responses. Airlines
+            with high sentiment volatility often can possibly be correlated with specific events or operational inconsistencies.
+            Below are two interactive visualization of the data collected from this analysis:
+        </p>
+
+        <h3>Sentiment Trends over Time</h3>
+        
+        <div class = 'center'>
+                <iframe src="sentiment.html" width="100%" height="400px" frameborder="0"></iframe>
+        </div>
+            <div class = 'text'>
+                <p> This plot displayed the compound sentiment scores for various airlines over time. The filter displays
+                    one airline at a time, and any airline in the dataset can be selected to display their trend. By highlighting
+                    changes in sentiment, the line chart can enable stakeholders to identify specific periods of
+                    heightened customer dissatisfaction or approval. For instance, a sudden drop in sentiment could
+                    signal operational issues, such as flight delays or cancellations, while a peak might indicate
+                    successful promotional campaigns or exceptional service experiences. It was expected that the trends
+                    shown by these views would be linear and flat, however, many of the major airlines have trends that
+                    shoot erratically up and down on sentiment. There are a couple of likely reasons for this. First off,
+                    given the size of the dataset (~23,000 reviews) compared to the number of airlines present (~500), if
+                    the reviews were hypothetically spread evenly, there would only be about 46 reviews per airline. That
+                    number of datapoints is not sufficient to show a smooth curve across timelines that sometimes span over
+                    a decade. However, since these graph are showcasing individual reviews, it goes to show that flight
+                    experience overall is very volatile in general. Some people have a normal flight with no issues, while
+                    other people can fly the same airline and have terrible things happen to them. Therefore, it's important
+                    to recognize the pitfalls in generalizing the quality of an airline.
+                </p>
+            </div>
+
+        <h3>Word Cloud</h3>
+
+        <div class = 'center'>
+                <iframe src="word_cloud.html" width="100%" height="400px" frameborder="0"></iframe>
+        </div>
+            <div class = 'text'>
+                <p> The Word Cloud Visualization highlights the most frequently used words in the airline reviews for both
+                    positive and negative reviews. Either category can be selected with the filter at the bottom, and
+                    hovering over each word gives their frequency within the entire dataset. Larger words represent terms
+                    that appear more often, offering insights into common themes, concerns, or praises. On the positive side,
+                    some of the larger words identify things that went will in these reviews, such as good service, comfortable
+                    seating, etc. Negative reviews mention delays, cancelled flights, and extra charges. These give an idea
+                    for the reasoning that each kind of review are coming in, and given the conclusions derived earlier,
+                    focusing in on those negative words can help airlines improve their overall quality.
+                </p>
+            </div>
+
+        <h3>Summary and Takeaways</h3>
+
+        <p>
+            This analysis shed some interesting light on how to go about booking trips. While it's tempting to look at
+            one big "overall" review and pick the highest number, there is a lot more nuance to the decision. Different
+            airlines excel in different areas, and it's important to select one that aligns with your values the best. The
+            further down you dig into the details of each of these reviews, the more context you will find for why airlines
+            are rated the way they are. The most important information will always lie within the individual reviews, since
+            the progression of breaking down these reviews bit by bit put into frame just how much detail you lose when
+            rounding up to one big score. When looking at this analysis on the business perspective, the takeaway is clear:
+            reduce the pain on customers before improving fields that are already sufficient. The point of the transportation
+            industry is to get people from point A to B with as little headache as possible, and that fact is supported
+            by what was shown here. The fewer obstacles placed in front of the consumer, the better experience they'll have,
+            and with that comes higher ratings which correlate with more bookings.
+        </p>
+
+        <p>
+            Through the development of this project, some improvements are clear. As hinted at earlier, a larger dataset
+            is vital in putting more weight behind the messages of these visualizations. Not only would more records smoothen
+            out the curves, but more features in the dataset could help us come to even more useful conclusions that can help
+            both the industry and the consumer. For example, rolling in ticket price can greatly impact how airline recommendations
+            are made. The experience could be very good, but it might not warrant an abhorrent ticket price. Especially
+            when ticket prices are easily the most considered value when it comes to booking flights, performing this
+            study without that information proved difficult. However, it's very likely that that data is difficult to come across.
+        </p>
+
 </body>
 </html>
