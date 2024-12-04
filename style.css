@@ -49,6 +49,7 @@ h1 {
     margin: 0 auto;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 .container {
@@ -63,5 +64,10 @@ h1 {
 
 .text {
     flex: 1; /* Allow text to grow to fill remaining space */
+}
+
+.iframe {
+     display: block;
+     justify-content: center;
 }
 
